@@ -1,0 +1,256 @@
+.hidden {
+	display: none !important;
+}
+
+body {
+	height: 100%;
+}
+
+.visible{
+	display: block !important;
+}
+
+#revision.visible {
+	display: block !important;
+}
+
+#global {
+	width: 100%;
+	height: 100%;
+}
+
+#global span {
+	
+	width: 80px;
+	height: 30px;
+}
+
+#global fieldset {
+	padding: 0px;
+	
+}
+
+#global fieldset legend {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.left {
+	border: 0px !important;
+	width: 150px !important;
+	float: right;
+}
+
+.choiceDefault {
+	background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 36%);
+}
+
+.choiceFocus {
+	background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 36%,rgba(30,105,222,1) 100%);
+}
+
+.choiceCorrect {
+	background: -webkit-linear-gradient(top, rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%);
+}
+
+.choiceWrong {
+	background: -webkit-linear-gradient(top, rgba(255,149,140,1) 0%,rgba(255,48,25,1) 34%,rgba(207,4,4,1) 100%);
+}
+
+.imgState {
+	float: right;
+	width: 25px;
+	vertical-align: middle;
+	margin-right: 10px !important;
+	margin-top: 5px !important;
+}
+
+.imgState2 {
+	float: right;
+	width: 50px;
+}
+
+#splashScreen {
+	width: 100%;
+	height: 100%;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.speciality {
+	margin-right: 10px !important;
+	font-size: 2em !important;
+}
+
+.objective {
+	margin-right: 10px !important;
+	font-size: 1.9em !important;
+}
+
+#question {
+	background: -webkit-linear-gradient(top, rgba(252,255,244,1) 0%,rgba(233,233,206,1) 97%); 
+	/*border: 3px solid rgba(233,233,206,1);*/
+	margin-bottom: 3px;
+	padding: 10px;
+	height: 400px !important;
+	overflow-y: scroll;
+	font-size: 2em;
+}
+
+#revision {
+	background: -webkit-linear-gradient(top, rgba(252,255,244,1) 0%,rgba(223,229,215,1) 30%,rgba(179,190,173,1) 100%);
+	/*border: 3px solid rgba(179,190,173,1);*/
+	font-size: 1.5em;
+	padding: 5px;
+	margin: 5px;
+}
+
+
+
+.choice {
+	color: white;
+	font-size: 1.8em;
+	padding: 10px;
+	margin: 10px;
+}
+
+#validerButton, #nextButton, #backBtn {
+	width: 275px !important;
+	height: 108px !important;
+	display: block;
+	float: left;
+	text-align: center;
+	-webkit-border-radius: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+	
+}
+
+#chart #nextButton {
+	padding-top: 15px;
+	display: block !important;
+}
+
+#skore, #timer {
+	font-size: 1.8em;
+	margin-top: 10px;
+}
+
+.titre {
+	text-align: center;
+	font-size: 3em;
+}
+
+.menu div {
+	width: 500px;
+	height: 180px;
+}
+
+#validerButton {
+	background: url('img/valider_default.png') no-repeat;
+}
+
+#validerButton:active {
+	background: url('img/valider_pressed.png') no-repeat;
+}
+
+#nextButton {
+	background: url('img/next_default.png') no-repeat;
+}
+
+#nextButton:active {
+	background: url('img/next_pressed.png') no-repeat;
+}
+
+#backBtn {
+	background: url('img/retour_default.png') no-repeat;
+}
+
+#backBtn:active {
+	background: url('img/retour_pressed.png') no-repeat;
+}
+
+
+#revBtn {
+	background: url('img/revision_default.png') no-repeat;
+}
+
+#revBtn:active {
+	background: url('img/revision_pressed.png') no-repeat;
+}
+
+#examBtn {
+	background: url('img/exam_default.png') no-repeat;
+}
+
+#examBtn:active {
+	background: url('img/exam_pressed.png') no-repeat;
+}
+
+#scoreBtn {
+	background: url('img/score_default.png') no-repeat;
+}
+
+#scoreBtn:active {
+	background: url('img/score_pressed.png') no-repeat;
+}
+
+.menu {
+	margin-left: -150px !important;
+	width: 500px;
+	position: absolute;
+	bottom: 50px;
+	left: 40%;	
+}
+
+#chart {
+	margin-left: -350px !important;
+	position: absolute;
+	bottom: 50px;
+	left: 50%;	
+}
+
+#scoreDiv {
+	width: 100%;
+	height: 600px;
+	overflow-y: scroll;
+}
+
+#score td {
+	text-align: center;
+	height: 50px;
+}
+
+#score td.pseudo {
+	width: 200px;
+}
+
+#score td.date {
+	width: 200px;
+}
+
+#score td.score {
+	width: 100px;
+}
+
+#score td.objectif {
+	width: 500px;
+}
+
+#score td.header {
+	background: silver;
+}
+
+#install {
+	margin-left: -250px !important;
+	position: absolute;
+	bottom: 350px;
+	left: 40%;
+}
+
+.progress-label {
+    float: left;
+    margin-left: 50%;
+    margin-top: 5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }

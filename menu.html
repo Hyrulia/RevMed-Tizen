@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <title>Menu</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+  	body {
+  		background: url('css/img/img_menu.jpg') no-repeat;
+  	}
+  </style>
+  <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-1.8.3.js"> </script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-ui-1.9.2.custom.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/app.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/database.js"></script>
+  <script type="text/javascript">
+  	'use strict'
+  $(document).ready(function() {
+  	
+	if(!localStorage.getItem('first_run')) {
+		$('#menu').attr('class', 'hidden')
+		$('#install').attr('class', 'visible')
+  		localStorage.setItem('first_run', 'true')
+  		var spt = document.createElement('script')
+  		spt.src='js/manager/install.js'
+  		$('head').append(spt)
+  	}	
+  		
+	$('#revBtn').click(function() {
+		App.setMode(1)
+		document.location.href = 'speciality.html'
+	})
+	$('#examBtn').click(function() {
+		App.setMode(0)
+		document.location.href = 'speciality.html'
+	})
+	$('#scoreBtn').click(function() {
+		document.location.href = 'score.html'
+	})
+})
+  </script>
+</head>
+<body>
+	<div id="install" class="hidden">
+	<span style="font-size: 2em;">Installation de la base de données, veuillez patienter...</span>
+	<div id="progressbar"><div class="progress-label">Loading...</div></div>
+	</div>
+	<div id="menu" class="menu">
+		<div id="examBtn"></div>
+		<div id="revBtn"></div>
+		<div id="scoreBtn"></div>
+  </div>
+</body>
+</html>

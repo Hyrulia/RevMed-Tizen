@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+	
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <title>Question</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+  body {
+  	background: rgb(246,246,246);
+  }
+  </style>
+  <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-1.8.3.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-ui-1.9.2.custom.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/app.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/database.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/questionDAO.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/scoreDAO.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/question.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/choiceDAO.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/choice.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  	'use strict'
+  	
+
+
+  	function trueAndFalse() {
+  		$('#choices > div').each( function() {
+		if(this.dataset['selected'] == 'true')
+			if(this.dataset['state'] == 1) {
+				$(this).attr('class', 'choiceCorrect choice correct')
+				this.getElementsByTagName('img')[0].src = 'css/img/img_correct.png'
+			} else {
+				$(this).attr('class', 'choiceWrong choice')
+				this.getElementsByTagName('img')[0].src = 'css/img/img_wrong.png'
+			}
+		else
+			if(this.dataset['state'] == 1)  {
+				$(this).attr('class', 'choiceCorrect choice')
+				this.getElementsByTagName('img')[0].src = 'css/img/img_wrong.png'
+			}
+	})
+  	}
+  	
+  	function calculateScore() {
+  		var totalCorrect = (function() {
+  			var x = 0
+  			$('#choices > div').each( function() {
+  				x = this.dataset['state'] == 1 ? x+1 : x
+  			})
+  			return x
+  		})()
+  		var correct = 0
+  		var wrong = 0
+  		
+  		$('#choices > div').each( function() {
+  			if(this.dataset['selected'] == 'true')
+  				if(this.dataset['state'] == 1)
+  					correct++
+  				else
+  					wrong++
+  		})
+  		return correct * (1 / totalCorrect) * (1 / (wrong + 1)) 
+  	}
+  	
+  	$(document).ready(function(){
+  		//$('body').attr('style', 'background: url("css/img/spec_' + App.getSpecialityId() + '.jpg") no-repeat;')
+	  	
+  		var question = new Question()
+  		
+  		var mode = App.getMode()
+  		var counter = 180
+  		
+  		function timer() {
+			var m = parseInt(counter / 60)
+			var s = parseInt(counter % 60)
+			$('#timer').text('timer: ' + m + ':' + s)
+			counter--
+			if(question.finished)
+				return
+			if(counter == 0) {
+				question.saveScore()
+				return
+			}
+			setTimeout(timer, 1000)
+  		}
+  		
+  		if(mode == 0) {
+  			$('#timer, #skore').attr({class: 'visible left'})
+  			setTimeout(timer, 1000)
+  		}
+  		
+  		
+  		
+  		$('#validerButton').click(function() {
+  			$(this).attr('class', 'hidden')
+			if(mode != 0)
+				$('#revisionField').attr('class', 'visible')
+  			$('#nextButton').attr('class', 'visible')
+  			trueAndFalse()
+  			question.score += calculateScore()
+  			$('#skore').text('Score: ' + question.score.toFixed(2))
+  		})
+  		
+  		$('#nextButton').click(function() {
+  			$(this).attr('class', 'hidden')
+  			$('#revisionField').attr('class', 'hidden')
+  			$('#validerButton').attr('class', 'visible')
+  			$('#question').empty()
+  			$('#choices').empty()
+  			$('#revision').empty()
+  			question.nextQuestion()
+  		})
+  	})
+  	
+  	
+  </script>
+</head>
+<body>
+  <div id="global">
+  	<fieldset>
+  		<legend>Question</legend>
+  		<div id="question"></div>
+  	</fieldset>
+  	
+  	  	<fieldset>
+  		<legend>Choix</legend>
+  		<div id="choices"></div>
+  	</fieldset>
+  	
+  	<fieldset id="revisionField" class="hidden">
+  		<legend>Commentaire</legend>
+  		<div id="revision"></div>
+  	</fieldset>
+  	
+  	<div>
+	  	<span id="validerButton"></span>
+	  	<span id="nextButton" class="hidden"></span>
+	  	<span id="skore" class="hidden left">Score: 0.00</span>
+	  	<span id="timer" class="hidden left">temps: 0:0</span>
+  	</div>
+  </div>
+</body>
+</html>

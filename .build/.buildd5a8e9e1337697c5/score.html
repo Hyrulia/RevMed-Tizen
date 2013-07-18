@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+<title>Scores</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+  body {
+  	background: rgb(246,246,246);
+  }
+  </style>
+<script type="text/javascript" charset="utf-8" src="js/jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/manager/app.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/dao/database.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/dao/scoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/manager/score.js"></script>
+<script src="js/chart/RGraph.common.core.js" ></script>
+<script src="js/chart/RGraph.common.dynamic.js" ></script>
+<script src="js/chart/RGraph.common.key.js" ></script>
+<script src="js/chart/RGraph.line.js" ></script>
+<script type="text/javascript">
+	
+"use strict"
+	$(document).ready(function() {
+		$('#backBtn').click(function() {
+			document.location.href = 'menu.html'
+		})
+	})
+	var score = new Score()
+</script>
+
+</head>
+<body>
+
+<div id="scoreDiv">
+	<table id="score" border="1" cellspacing="0">	
+		<tr>
+			<td class="pseudo header">Pseudo</td>
+			<td class="score header">Score</td>
+			<td class="date header">Date</td>
+			<td class="objectif header">Objectif</td>
+		</tr>
+	</table>	
+</div>
+
+<div id="chart">
+<canvas id="cvs" width="700" height="450">[No canvas support]</canvas>
+
+<div id="backBtn"></div>
+</div>
+
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+	
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <title>Objectifs</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+      <style type="text/css">
+  body {
+  	background: url('css/img/objectifs.jpg') no-repeat;
+  }
+  </style>
+  <link href="css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-1.8.3.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/app.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/database.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dao/objectiveDAO.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/manager/objective.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  	'use strict'
+  	$(document).ready(function() {
+  		//$('body').attr('style', 'background: url("css/img/spec_' + App.getSpecialityId() + '.jpg") no-repeat;')
+	  	var obj = new Objective()
+	  	obj.toHTML()
+		
+		$('#backBtn').click(function() {
+			document.location.href = 'speciality.html';
+		});
+  	})
+	
+	
+  </script>
+</head>
+<body>
+	
+  <div id="global" class="ui-accordion ui-widget ui-helper-reset" style="margin-top: 150px">
+  
+  </div>
+  <div id="backBtn"></div>
+</body>
+</html>
